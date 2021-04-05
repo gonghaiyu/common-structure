@@ -2,8 +2,10 @@ package com.xxx.yyy.web.config;
 
 
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 import org.springframework.context.annotation.PropertySource;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 /**
  * 该类是一个配置类，它的作用和bean.xml是一样的
@@ -37,8 +39,9 @@ import org.springframework.context.annotation.PropertySource;
  */
 //@Configuration
 @ComponentScan("com.xxx")
-@Import(JdbcConfig.class)
 @PropertySource("classpath:jdbcConfig.properties")
+@Import({JdbcConfig.class,MasterDataSourceConfig.class,ClusterDataSourceConfig.class})
+@EnableTransactionManagement
 public class SpringConfiguration {
 
 }
